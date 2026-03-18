@@ -1,41 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Shamwoon Saad | Portfolio</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; display: flex; justify-content: center; padding: 40px; }
-        .container { background: white; width: 100%; max-width: 600px; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
-        .profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 5px solid #007bff; margin-bottom: 20px; }
-        h1 { margin: 10px 0; color: #333; }
-        .section { margin-top: 25px; text-align: left; border-top: 1px solid #eee; padding-top: 15px; }
-        h3 { color: #007bff; margin-bottom: 5px; }
-        p { color: #555; line-height: 1.6; white-space: pre-wrap; }
-        .contact-btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+        :root { --primary: #0070f3; --dark: #111; --text: #444; }
+        body { font-family: 'Segoe UI', sans-serif; background: #fafafa; color: var(--text); margin: 0; display: flex; justify-content: center; padding: 20px; }
+        .card { background: white; width: 100%; max-width: 500px; padding: 40px; border-radius: 2px; border: 1px solid #eaeaea; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; }
+        .view-badge { position: absolute; top: 20px; right: 20px; background: #f0f0f0; padding: 4px 10px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }
+        .profile-pic { width: 100px; height: 100px; filter: grayscale(100%); transition: 0.3s; border: 1px solid #eee; margin-bottom: 20px; object-fit: cover; }
+        .profile-pic:hover { filter: grayscale(0%); border-color: var(--primary); }
+        h1 { font-size: 1.5rem; font-weight: 700; color: var(--dark); letter-spacing: -0.5px; margin: 0; }
+        .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-top: 25px; display: block; font-weight: 600; }
+        p { font-size: 0.95rem; line-height: 1.6; margin: 5px 0 0; }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .btn { font-size: 0.8rem; font-weight: 600; text-decoration: none; color: var(--dark); border: 1px solid var(--dark); padding: 8px 16px; transition: 0.2s; }
+        .btn:hover { background: var(--dark); color: white; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="photo.jpg" alt="Shamwoon Saad" class="profile-pic">
+    <div class="card">
+        <div class="view-badge">DB Views: <span id="viewCount">0</span></div>
+        <img src="photo.jpg" alt="Profile" class="profile-pic">
         <h1 id="userName">Loading...</h1>
         
-        <div class="section">
-            <h3>Technical Skills</h3>
-            <p id="userSkills"></p>
-        </div>
+        <span class="label">Expertise</span>
+        <p id="userSkills"></p>
 
-        <div class="section">
-            <h3>Academic Achievements</h3>
-            <p id="userAchieve"></p>
-        </div>
+        <span class="label">Education & Awards</span>
+        <p id="userAchieve"></p>
 
-        <div class="section">
-            <h3>Sports & Activities</h3>
-            <p id="userSports"></p>
-        </div>
+        <span class="label">Athletics</span>
+        <p id="userSports"></p>
 
-        <div class="section">
-            <a id="userLink" href="#" class="contact-btn">LinkedIn Profile</a>
-            <p>Contact: <span id="userPhone"></span></p>
+        <div class="footer">
+            <a id="userLink" href="#" class="btn">LINKEDIN</a>
+            <span id="userPhone" style="font-size: 0.8rem; font-weight: 600;"></span>
         </div>
     </div>
 
@@ -43,12 +43,13 @@
         fetch('/api/data')
             .then(res => res.json())
             .then(data => {
-                document.getElementById('userName').innerText = data.name || "Error";
-                document.getElementById('userSkills').innerText = data.skills || "";
-                document.getElementById('userAchieve').innerText = data.achievements || "";
-                document.getElementById('userSports').innerText = data.sports || "";
-                document.getElementById('userPhone').innerText = data.phone || "";
-                document.getElementById('userLink').href = data.linkedin || "#";
+                document.getElementById('userName').innerText = data.name;
+                document.getElementById('userSkills').innerText = data.skills;
+                document.getElementById('userAchieve').innerText = data.achievements;
+                document.getElementById('userSports').innerText = data.sports;
+                document.getElementById('userPhone').innerText = data.phone;
+                document.getElementById('userLink').href = data.linkedin;
+                document.getElementById('viewCount').innerText = data.views;
             });
     </script>
 </body>

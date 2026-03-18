@@ -19,16 +19,15 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// GET DATA FROM TIDB
+// PROOF: This tells the database to count the visit
 app.get('/api/data', (req, res) => {
-  connection.query('SELECT * FROM my_info LIMIT 1', (err, results) => {
-    if (err) {
-      console.log(err);
-      return res.json({ name: "Database Error" });
-    }
-    res.json(results[0]);
+  connection.query('UPDATE test.my_info SET views = views + 1 WHERE id = 1', () => {
+    connection.query('SELECT * FROM test.my_info WHERE id = 1', (err, results) => {
+      if (err) return res.json({ name: "DB Error" });
+      res.json(results[0]);
+    });
   });
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log('Server Running on ' + PORT));
+app.listen(PORT, () => console.log('Server Ready'));
