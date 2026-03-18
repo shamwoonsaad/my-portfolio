@@ -19,12 +19,16 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// THIS GETS THE DATA FROM TIDB
+// GET DATA FROM TIDB
 app.get('/api/data', (req, res) => {
   connection.query('SELECT * FROM my_info LIMIT 1', (err, results) => {
-    if (err) return res.json({ name: "Error loading data" });
+    if (err) {
+      console.log(err);
+      return res.json({ name: "Database Error" });
+    }
     res.json(results[0]);
   });
 });
 
-app.listen(process.env.PORT || 3000, () => console.log('Server Running'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log('Server Running on ' + PORT));
