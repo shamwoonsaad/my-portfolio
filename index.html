@@ -2,42 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Shamwoon Saad | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shamwoon Saad | Systems Engineer</title>
     <style>
-        :root { --primary: #0070f3; --dark: #111; --text: #444; }
-        body { font-family: 'Segoe UI', sans-serif; background: #fafafa; color: var(--text); margin: 0; display: flex; justify-content: center; padding: 20px; }
-        .card { background: white; width: 100%; max-width: 500px; padding: 40px; border-radius: 2px; border: 1px solid #eaeaea; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; }
-        .view-badge { position: absolute; top: 20px; right: 20px; background: #f0f0f0; padding: 4px 10px; font-size: 0.7rem; font-weight: 600; border-radius: 20px; }
-        .profile-pic { width: 100px; height: 100px; filter: grayscale(100%); transition: 0.3s; border: 1px solid #eee; margin-bottom: 20px; object-fit: cover; }
-        .profile-pic:hover { filter: grayscale(0%); border-color: var(--primary); }
-        h1 { font-size: 1.5rem; font-weight: 700; color: var(--dark); letter-spacing: -0.5px; margin: 0; }
-        .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-top: 25px; display: block; font-weight: 600; }
-        p { font-size: 0.95rem; line-height: 1.6; margin: 5px 0 0; }
-        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-        .btn { font-size: 0.8rem; font-weight: 600; text-decoration: none; color: var(--dark); border: 1px solid var(--dark); padding: 8px 16px; transition: 0.2s; }
-        .btn:hover { background: var(--dark); color: white; }
+        :root { --brand: #0071e3; --bg: #ffffff; --text: #1d1d1f; --secondary: #86868b; }
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.5; }
+        
+        /* Navigation / Header */
+        nav { padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f2f2f2; position: sticky; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); z-index: 100; }
+        .logo { font-weight: 700; font-size: 1.2rem; }
+        .views { font-size: 0.8rem; color: var(--secondary); font-weight: 500; }
+
+        /* Hero Section */
+        .hero { padding: 100px 10% 60px; max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
+        .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; }
+        .hero-text h1 { font-size: 3.5rem; margin: 0; letter-spacing: -1px; }
+        .hero-text p { font-size: 1.5rem; color: var(--secondary); margin: 10px 0; }
+
+        /* Content Sections */
+        section { padding: 60px 10%; max-width: 1200px; margin: 0 auto; }
+        h2 { font-size: 2rem; border-bottom: 2px solid #000; display: inline-block; margin-bottom: 40px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .item { padding: 30px; border: 1px solid #eee; border-radius: 12px; transition: all 0.3s ease; }
+        .item:hover { border-color: var(--brand); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transform: translateY(-5px); }
+        .item h3 { margin-top: 0; color: var(--brand); }
+
+        /* Projects Placeholder */
+        .project-card { background: #f9f9f9; padding: 40px; border-radius: 12px; text-align: center; border: 2px dashed #ddd; color: #aaa; }
+
+        footer { padding: 80px 10%; background: #f5f5f7; text-align: center; }
+        .contact-link { font-size: 2rem; text-decoration: none; color: var(--brand); font-weight: 700; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="view-badge">DB Views: <span id="viewCount">0</span></div>
-        <img src="photo.jpg" alt="Profile" class="profile-pic">
-        <h1 id="userName">Loading...</h1>
-        
-        <span class="label">Expertise</span>
-        <p id="userSkills"></p>
 
-        <span class="label">Education & Awards</span>
-        <p id="userAchieve"></p>
+    <nav>
+        <div class="logo">SS.</div>
+        <div class="views">Portfolio Views: <span id="viewCount">0</span></div>
+    </nav>
 
-        <span class="label">Athletics</span>
-        <p id="userSports"></p>
-
-        <div class="footer">
-            <a id="userLink" href="#" class="btn">LINKEDIN</a>
-            <span id="userPhone" style="font-size: 0.8rem; font-weight: 600;"></span>
+    <div class="hero">
+        <img src="photo.jpg" alt="Shamwoon Saad" class="profile-img">
+        <div class="hero-text">
+            <h1 id="userName">Shamwoon Saad</h1>
+            <p>Developer & Systems Specialist</p>
         </div>
     </div>
+
+    <section id="expertise">
+        <h2>Expertise</h2>
+        <div class="grid">
+            <div class="item">
+                <h3>Core Engineering</h3>
+                <p id="userSkills"></p>
+            </div>
+            <div class="item">
+                <h3>Achievements</h3>
+                <p id="userAchieve"></p>
+            </div>
+            <div class="item">
+                <h3>Extracurricular</h3>
+                <p id="userSports"></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="grid">
+            <div class="project-card">
+                <h3>Data Pipeline Project</h3>
+                <p>System architecture and database integration. (Details Pending Upload)</p>
+            </div>
+            <div class="project-card">
+                <h3>Automobile Tech Analysis</h3>
+                <p>Advanced diagnostic and performance reporting. (Details Pending Upload)</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Let's collaborate.</p>
+        <a id="userLink" href="#" class="contact-link">LinkedIn</a>
+        <p style="margin-top: 20px;">Contact: <span id="userPhone"></span></p>
+    </footer>
 
     <script>
         fetch('/api/data')
