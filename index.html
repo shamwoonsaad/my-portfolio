@@ -5,123 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shamwoon Saad | Portfolio</title>
     <style>
-        :root { 
-            --bg: #0b0b0d; 
-            --card-bg: #16161a;
-            --accent: #007aff; 
-            --text-main: #ffffff;
-            --text-dim: #a1a1a6;
-        }
-        * { box-sizing: border-box; transition: all 0.3s ease; }
-        body { 
-            font-family: 'SF Pro Display', -apple-system, sans-serif; 
-            background: var(--bg); 
-            color: var(--text-main); 
-            margin: 0; 
-            overflow-x: hidden;
-        }
-        
-        /* Navigation */
-        nav { 
-            padding: 20px 8%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            background: rgba(11, 11, 13, 0.8);
-            backdrop-filter: blur(20px);
-            position: sticky; top: 0; z-index: 1000;
-        }
-        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -1px; color: var(--accent); }
-        .views-text { font-size: 0.8rem; color: var(--text-dim); background: #1c1c1e; padding: 6px 12px; border-radius: 20px; }
-
-        /* Hero Section */
-        .hero { 
-            height: 80vh; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center;
-            background: radial-gradient(circle at center, #1c1c1e 0%, #0b0b0d 100%);
-        }
-        .profile-wrapper {
-            position: relative;
-            margin-bottom: 30px;
-        }
-        .profile-img { 
-            width: 160px; height: 160px; border-radius: 50%; 
-            object-fit: cover; border: 4px solid var(--card-bg);
-            box-shadow: 0 0 40px rgba(0, 122, 255, 0.2);
-        }
-        .hero h1 { font-size: 4rem; margin: 0; letter-spacing: -2px; }
-        .hero p { font-size: 1.2rem; color: var(--accent); font-weight: 500; text-transform: uppercase; letter-spacing: 2px; }
-
-        /* Sections */
-        section { padding: 100px 8%; max-width: 1400px; margin: 0 auto; }
-        h2 { font-size: 2.5rem; margin-bottom: 50px; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .glass-card { 
-            background: var(--card-bg); 
-            padding: 40px; 
-            border-radius: 24px; 
-            border: 1px solid #2c2c2e;
-        }
-        .glass-card:hover { border-color: var(--accent); transform: translateY(-10px); }
-        .glass-card h3 { color: var(--accent); font-size: 1.3rem; margin-top: 0; }
-        .glass-card p { color: var(--text-dim); line-height: 1.7; }
-
-        /* Project UI */
-        .project-box {
-            background: linear-gradient(145deg, #1c1c1e, #16161a);
-            height: 250px; border-radius: 24px; display: flex;
-            align-items: center; justify-content: center;
-            border: 1px solid #2c2c2e; position: relative; overflow: hidden;
-        }
-        .project-box::before {
-            content: "LATEST WORK";
-            font-size: 0.7rem; color: var(--accent); position: absolute; top: 20px; left: 20px; font-weight: 700;
-        }
-
-        /* Footer */
-        footer { padding: 100px 8%; text-align: center; border-top: 1px solid #1c1c1e; }
-        .cta { 
-            background: var(--accent); color: white; padding: 18px 40px; 
-            border-radius: 40px; text-decoration: none; font-weight: 600; 
-            display: inline-block; margin-top: 20px;
-        }
+        :root { --bg: #0b0b0d; --card: #16161a; --accent: #007aff; --text: #ffffff; --dim: #a1a1a6; }
+        * { box-sizing: border-box; transition: 0.3s ease; }
+        body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; }
+        nav { padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; background: rgba(11,11,13,0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
+        .logo { font-weight: 800; color: var(--accent); font-size: 1.2rem; }
+        .views { font-size: 0.8rem; color: var(--dim); background: #1c1c1e; padding: 5px 15px; border-radius: 20px; }
+        .hero { height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #1c1c1e 0%, #0b0b0d 100%); }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); margin-bottom: 20px; }
+        section { padding: 40px 8%; max-width: 1200px; margin: 0 auto; }
+        h2 { border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid #2c2c2e; }
+        .project-box { background: linear-gradient(145deg, #1c1c1e, #16161a); border: 1px dashed #444; padding: 30px; border-radius: 20px; text-align: center; color: var(--dim); }
+        input, textarea { width: 100%; padding: 15px; margin-bottom: 10px; background: #1c1c1e; border: 1px solid #2c2c2e; color: white; border-radius: 12px; outline: none; }
+        .btn { background: var(--accent); color: white; padding: 15px; border: none; border-radius: 12px; width: 100%; cursor: pointer; font-weight: 700; }
+        #adminModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: var(--card); width: 90%; max-width: 600px; max-height: 80vh; padding: 40px; border-radius: 24px; overflow-y: auto; border: 1px solid var(--accent); position: relative; }
+        .close-btn { position: absolute; top: 20px; right: 20px; color: var(--dim); cursor: pointer; font-size: 1.5rem; }
+        footer { padding: 80px 8%; text-align: center; background: #050505; }
+        .social-link { color: var(--accent); font-size: 1.5rem; text-decoration: none; font-weight: 700; display: block; margin-bottom: 10px; }
+        .admin-trigger { background: none; border: none; color: #1a1a1a; cursor: pointer; margin-top: 40px; font-size: 0.7rem; }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="logo">SAAD.SYS</div>
-        <div class="views-text">Portfolio Views: <span id="viewCount">0</span></div>
+        <div class="views">Portfolio Views: <span id="viewCount">0</span></div>
     </nav>
 
     <div class="hero">
-        <div class="profile-wrapper">
-            <img src="photo.jpg" alt="Profile" class="profile-img">
-        </div>
+        <img src="photo.jpg" alt="Profile" class="profile-img">
         <h1 id="userName">Shamwoon Saad</h1>
-        <p>Systems & Database Engineer</p>
+        <p style="color:var(--accent); letter-spacing:3px; font-weight:600; font-size:0.9rem;">SYSTEMS & DATABASE ENGINEER</p>
     </div>
 
     <section>
-        <h2>Core Stack</h2>
         <div class="grid">
-            <div class="glass-card">
-                <h3>Languages</h3>
-                <p id="userSkills"></p>
-            </div>
-            <div class="glass-card">
-                <h3>Global Achievements</h3>
-                <p id="userAchieve"></p>
-            </div>
-            <div class="glass-card">
-                <h3>Leadership & Athletics</h3>
-                <p id="userSports"></p>
-            </div>
+            <div class="card"><h3>Technical Stack</h3><p id="userSkills" style="color:var(--dim)"></p></div>
+            <div class="card"><h3>Olympiads & Honors</h3><p id="userAchieve" style="color:var(--dim)"></p></div>
+            <div class="card"><h3>Leadership/Sports</h3><p id="userSports" style="color:var(--dim)"></p></div>
         </div>
     </section>
 
@@ -129,38 +52,93 @@
         <h2>Project Workspace</h2>
         <div class="grid">
             <div class="project-box">
-                <div style="text-align:center">
-                    <h4 style="margin:0">Automobile Diagnostics Engine</h4>
-                    <span style="font-size:0.8rem; color:var(--text-dim)">Integration Stage</span>
-                </div>
+                <h4>Automobile Diagnostics Engine</h4>
+                <p>Analysis and reporting. (Data Pending)</p>
             </div>
             <div class="project-box">
-                <div style="text-align:center">
-                    <h4 style="margin:0">MySQL Performance Scaler</h4>
-                    <span style="font-size:0.8rem; color:var(--text-dim)">Database Node</span>
-                </div>
+                <h4>MySQL Performance </h4>
+                <p>Database integration. (Data Pending)</p>
             </div>
         </div>
     </section>
 
+    <section>
+        <h2>Secure Contact</h2>
+        <div class="card">
+            <input type="text" id="cName" placeholder="Inquiry Name">
+            <textarea id="cMsg" placeholder="Message Body"></textarea>
+            <button class="btn" onclick="send()">INITIATE MESSAGE</button>
+        </div>
+    </section>
+
     <footer>
-        <h2>Connect for Opportunities</h2>
-        <a id="userLink" href="#" class="cta">VIEW LINKEDIN</a>
-        <p style="margin-top: 30px; color: var(--text-dim)">Direct: <span id="userPhone"></span></p>
+        <a id="userLink" href="#" class="social-link" target="_blank">LINKEDIN PROFILE</a>
+        <p style="color:var(--dim)">Direct: <span id="userPhone" style="color:white"></span></p>
+        <button class="admin-trigger" onclick="login()">Log in as Saad</button>
     </footer>
 
+    <div id="adminModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="document.getElementById('adminModal').style.display='none'">&times;</span>
+            <h2 style="margin-top:0">Inbox</h2>
+            <div id="msgLog"></div>
+        </div>
+    </div>
+
     <script>
-        fetch('/api/data')
+        fetch('/api/data').then(r => r.json()).then(data => {
+            document.getElementById('userName').innerText = data.name;
+            document.getElementById('userSkills').innerText = data.skills;
+            document.getElementById('userAchieve').innerText = data.achievements;
+            document.getElementById('userSports').innerText = data.sports;
+            document.getElementById('userPhone').innerText = data.phone;
+            document.getElementById('userLink').href = data.linkedin;
+            document.getElementById('viewCount').innerText = data.views;
+        });
+
+        function send() {
+            const name = document.getElementById('cName').value;
+            const msg = document.getElementById('cMsg').value;
+            if(!name || !msg) return alert("Missing fields");
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ name, msg })
+            }).then(() => { alert("Sent!"); location.reload(); });
+        }
+
+        let currentPass = "";
+        function login() {
+            currentPass = prompt("Access Key:");
+            fetchMessages();
+        }
+
+        function fetchMessages() {
+            fetch('/api/admin/messages', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ pass: currentPass })
+            })
             .then(res => res.json())
             .then(data => {
-                document.getElementById('userName').innerText = data.name;
-                document.getElementById('userSkills').innerText = data.skills;
-                document.getElementById('userAchieve').innerText = data.achievements;
-                document.getElementById('userSports').innerText = data.sports;
-                document.getElementById('userPhone').innerText = data.phone;
-                document.getElementById('userLink').href = data.linkedin;
-                document.getElementById('viewCount').innerText = data.views;
-            });
+                let h = "";
+                data.forEach(m => h += `<div class='card' style='margin-bottom:15px; border-color:#333; display:flex; justify-content:space-between; align-items:center;'>
+                    <div><small style='color:var(--accent)'>From: ${m.sender_name}</small><p style='margin:5px 0 0'>${m.message_text}</p></div>
+                    <button style="background:red; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;" onclick="delMsg(${m.id})">Del</button>
+                </div>`);
+                document.getElementById('msgLog').innerHTML = h || "No messages.";
+                document.getElementById('adminModal').style.display = 'flex';
+            }).catch(() => alert("Denied"));
+        }
+
+        function delMsg(id) {
+            if(!confirm("Delete?")) return;
+            fetch(`/api/admin/messages/${id}`, {
+                method: 'DELETE',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ pass: currentPass })
+            }).then(() => fetchMessages());
+        }
     </script>
 </body>
 </html>
