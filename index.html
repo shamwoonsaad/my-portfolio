@@ -3,90 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shamwoon Saad | Systems Engineer</title>
+    <title>Shamwoon Saad | Portfolio</title>
     <style>
-        :root { --brand: #0071e3; --bg: #ffffff; --text: #1d1d1f; --secondary: #86868b; }
-        * { box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.5; }
+        :root { 
+            --bg: #0b0b0d; 
+            --card-bg: #16161a;
+            --accent: #007aff; 
+            --text-main: #ffffff;
+            --text-dim: #a1a1a6;
+        }
+        * { box-sizing: border-box; transition: all 0.3s ease; }
+        body { 
+            font-family: 'SF Pro Display', -apple-system, sans-serif; 
+            background: var(--bg); 
+            color: var(--text-main); 
+            margin: 0; 
+            overflow-x: hidden;
+        }
         
-        /* Navigation / Header */
-        nav { padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f2f2f2; position: sticky; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); z-index: 100; }
-        .logo { font-weight: 700; font-size: 1.2rem; }
-        .views { font-size: 0.8rem; color: var(--secondary); font-weight: 500; }
+        /* Navigation */
+        nav { 
+            padding: 20px 8%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: rgba(11, 11, 13, 0.8);
+            backdrop-filter: blur(20px);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -1px; color: var(--accent); }
+        .views-text { font-size: 0.8rem; color: var(--text-dim); background: #1c1c1e; padding: 6px 12px; border-radius: 20px; }
 
         /* Hero Section */
-        .hero { padding: 100px 10% 60px; max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
-        .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; }
-        .hero-text h1 { font-size: 3.5rem; margin: 0; letter-spacing: -1px; }
-        .hero-text p { font-size: 1.5rem; color: var(--secondary); margin: 10px 0; }
+        .hero { 
+            height: 80vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center;
+            background: radial-gradient(circle at center, #1c1c1e 0%, #0b0b0d 100%);
+        }
+        .profile-wrapper {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .profile-img { 
+            width: 160px; height: 160px; border-radius: 50%; 
+            object-fit: cover; border: 4px solid var(--card-bg);
+            box-shadow: 0 0 40px rgba(0, 122, 255, 0.2);
+        }
+        .hero h1 { font-size: 4rem; margin: 0; letter-spacing: -2px; }
+        .hero p { font-size: 1.2rem; color: var(--accent); font-weight: 500; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Content Sections */
-        section { padding: 60px 10%; max-width: 1200px; margin: 0 auto; }
-        h2 { font-size: 2rem; border-bottom: 2px solid #000; display: inline-block; margin-bottom: 40px; }
+        /* Sections */
+        section { padding: 100px 8%; max-width: 1400px; margin: 0 auto; }
+        h2 { font-size: 2.5rem; margin-bottom: 50px; }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .item { padding: 30px; border: 1px solid #eee; border-radius: 12px; transition: all 0.3s ease; }
-        .item:hover { border-color: var(--brand); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transform: translateY(-5px); }
-        .item h3 { margin-top: 0; color: var(--brand); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .glass-card { 
+            background: var(--card-bg); 
+            padding: 40px; 
+            border-radius: 24px; 
+            border: 1px solid #2c2c2e;
+        }
+        .glass-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+        .glass-card h3 { color: var(--accent); font-size: 1.3rem; margin-top: 0; }
+        .glass-card p { color: var(--text-dim); line-height: 1.7; }
 
-        /* Projects Placeholder */
-        .project-card { background: #f9f9f9; padding: 40px; border-radius: 12px; text-align: center; border: 2px dashed #ddd; color: #aaa; }
+        /* Project UI */
+        .project-box {
+            background: linear-gradient(145deg, #1c1c1e, #16161a);
+            height: 250px; border-radius: 24px; display: flex;
+            align-items: center; justify-content: center;
+            border: 1px solid #2c2c2e; position: relative; overflow: hidden;
+        }
+        .project-box::before {
+            content: "LATEST WORK";
+            font-size: 0.7rem; color: var(--accent); position: absolute; top: 20px; left: 20px; font-weight: 700;
+        }
 
-        footer { padding: 80px 10%; background: #f5f5f7; text-align: center; }
-        .contact-link { font-size: 2rem; text-decoration: none; color: var(--brand); font-weight: 700; }
+        /* Footer */
+        footer { padding: 100px 8%; text-align: center; border-top: 1px solid #1c1c1e; }
+        .cta { 
+            background: var(--accent); color: white; padding: 18px 40px; 
+            border-radius: 40px; text-decoration: none; font-weight: 600; 
+            display: inline-block; margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">SS.</div>
-        <div class="views">Portfolio Views: <span id="viewCount">0</span></div>
+        <div class="logo">SAAD.SYS</div>
+        <div class="views-text">Portfolio Views: <span id="viewCount">0</span></div>
     </nav>
 
     <div class="hero">
-        <img src="photo.jpg" alt="Shamwoon Saad" class="profile-img">
-        <div class="hero-text">
-            <h1 id="userName">Shamwoon Saad</h1>
-            <p>Developer & Systems Specialist</p>
+        <div class="profile-wrapper">
+            <img src="photo.jpg" alt="Profile" class="profile-img">
         </div>
+        <h1 id="userName">Shamwoon Saad</h1>
+        <p>Systems & Database Engineer</p>
     </div>
 
-    <section id="expertise">
-        <h2>Expertise</h2>
+    <section>
+        <h2>Core Stack</h2>
         <div class="grid">
-            <div class="item">
-                <h3>Core Engineering</h3>
+            <div class="glass-card">
+                <h3>Languages</h3>
                 <p id="userSkills"></p>
             </div>
-            <div class="item">
-                <h3>Achievements</h3>
+            <div class="glass-card">
+                <h3>Global Achievements</h3>
                 <p id="userAchieve"></p>
             </div>
-            <div class="item">
-                <h3>Extracurricular</h3>
+            <div class="glass-card">
+                <h3>Leadership & Athletics</h3>
                 <p id="userSports"></p>
             </div>
         </div>
     </section>
 
-    <section id="projects">
-        <h2>Featured Projects</h2>
+    <section>
+        <h2>Project Workspace</h2>
         <div class="grid">
-            <div class="project-card">
-                <h3>Data Pipeline Project</h3>
-                <p>System architecture and database integration. (Details Pending Upload)</p>
+            <div class="project-box">
+                <div style="text-align:center">
+                    <h4 style="margin:0">Automobile Diagnostics Engine</h4>
+                    <span style="font-size:0.8rem; color:var(--text-dim)">Integration Stage</span>
+                </div>
             </div>
-            <div class="project-card">
-                <h3>Automobile Tech Analysis</h3>
-                <p>Advanced diagnostic and performance reporting. (Details Pending Upload)</p>
+            <div class="project-box">
+                <div style="text-align:center">
+                    <h4 style="margin:0">MySQL Performance Scaler</h4>
+                    <span style="font-size:0.8rem; color:var(--text-dim)">Database Node</span>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>Let's collaborate.</p>
-        <a id="userLink" href="#" class="contact-link">LinkedIn</a>
-        <p style="margin-top: 20px;">Contact: <span id="userPhone"></span></p>
+        <h2>Connect for Opportunities</h2>
+        <a id="userLink" href="#" class="cta">VIEW LINKEDIN</a>
+        <p style="margin-top: 30px; color: var(--text-dim)">Direct: <span id="userPhone"></span></p>
     </footer>
 
     <script>
