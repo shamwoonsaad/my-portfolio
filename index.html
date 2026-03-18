@@ -1,26 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Shamwoon Saad | Portfolio</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background-color: #f4f4f4; }
-        .card { background: white; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h1 { color: #333; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; display: flex; justify-content: center; padding: 40px; }
+        .container { background: white; width: 100%; max-width: 600px; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
+        .profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 5px solid #007bff; margin-bottom: 20px; }
+        h1 { margin: 10px 0; color: #333; }
+        .section { margin-top: 25px; text-align: left; border-top: 1px solid #eee; padding-top: 15px; }
+        h3 { color: #007bff; margin-bottom: 5px; }
+        p { color: #555; line-height: 1.6; }
+        .contact-btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Welcome to My Portfolio</h1>
-        <p id="details">Loading my info...</p>
+    <div class="container">
+        <img src="photo.jpg" alt="Shamwoon Saad" class="profile-pic">
+        <h1 id="userName">Loading...</h1>
+        
+        <div class="section">
+            <h3>Technical Skills</h3>
+            <p id="userSkills"></p>
+        </div>
+
+        <div class="section">
+            <h3>Academic Achievements</h3>
+            <p id="userAchieve"></p>
+        </div>
+
+        <div class="section">
+            <h3>Sports & Activities</h3>
+            <p id="userSports"></p>
+        </div>
+
+        <div class="section">
+            <a id="userLink" href="#" class="contact-btn">LinkedIn Profile</a>
+            <p>Contact: <span id="userPhone"></span></p>
+        </div>
     </div>
 
     <script>
-        // This part talks to your server to get info
-        fetch('/data')
-            .then(response => response.json())
+        fetch('/api/data')
+            .then(res => res.json())
             .then(data => {
-                document.getElementById('details').innerText = data.message;
+                document.getElementById('userName').innerText = data.name;
+                document.getElementById('userSkills').innerText = data.skills;
+                document.getElementById('userAchieve').innerText = data.achievements;
+                document.getElementById('userSports').innerText = data.sports;
+                document.getElementById('userPhone').innerText = data.phone;
+                document.getElementById('userLink').href = data.linkedin;
             });
     </script>
 </body>

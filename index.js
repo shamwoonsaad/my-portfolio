@@ -3,7 +3,6 @@ const express = require('express');
 const mysql = require('mysql2');
 const path = require('path');
 const app = express();
-const port = 3000;
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -14,16 +13,18 @@ const connection = mysql.createConnection({
   ssl: { minVersion: 'TLSv1.2', rejectUnauthorized: true }
 });
 
-// This tells the server to show your HTML file
+app.use(express.static(__dirname));
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// This is a "data" door for the website to get info
-app.get('/data', (req, res) => {
-  res.json({ message: "This info is coming from the Backend!" });
+// THIS GETS THE DATA FROM TIDB
+app.get('/api/data', (req, res) => {
+  connection.query('SELECT * FROM my_info LIMIT 1', (err, results) => {
+    if (err) return res.json({ name: "Error loading data" });
+    res.json(results[0]);
+  });
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+app.listen(process.env.PORT || 3000, () => console.log('Server Running'));
