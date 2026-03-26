@@ -58,4 +58,4 @@ app.delete('/api/admin/messages/:id', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log('Server running on ' + PORT));
+app.listen(PORT, () => console.log('MNC Systems Active on ' + PORT));
